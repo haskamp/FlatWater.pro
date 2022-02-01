@@ -6,7 +6,7 @@ const Page = () => {
 	return (
 		<Layout>
 			<h1>Profile</h1>
-			<Link href={"./index.jsx"}>{"nextPage"}</Link>
+			<Link href="./index.jsx">{"nextPage"}</Link>
 		</Layout>
 	);
 };
