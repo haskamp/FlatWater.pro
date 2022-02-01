@@ -1,6 +1,5 @@
 import Head from "next/head";
 import React from "react";
-import Button from "../atoms/button";
 import useGet from "../ions/hooks/fetch/get";
 import Layout from "../organisms/layout";
 import Card from "../molecules/card/index.jsx";
