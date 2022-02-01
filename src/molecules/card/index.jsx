@@ -12,7 +12,7 @@ import {
 	Tooltip,
 	Typography,
 } from "@mui/material";
-import { ExpandMore, LocalOffer, LocationOn, Message, Verified } from "@mui/icons-material";
+import { ExpandMore, LocationOn, Message, Verified } from "@mui/icons-material";
 import image from "../../../database/images/instructor.png";
 
 // Dummy Data Card
@@ -35,12 +35,10 @@ const Index = () => {
 
 	return (
 		<Card sx={{ maxWidth: 350 }}>
-			{/*Card Action Area I*/}
 			<CardActionArea style={{ position: "relative" }}>
 				<CardMedia component="img" image={image.src} alt={`Kite-Instructor ${name}`} />
 				<CardContent>
 					<Typography variant="h4">{name}</Typography>{" "}
-					{/*sx={{position: "absolute", width: "100%", top: 0, color: "white", backgroundImage: "linear-gradient(to bottom, rgba(0,0,0,0.5), rgba(0,0,0,0))", paddingTop: 1}}*/}
 					<Typography variant="h6">
 						<LocationOn />
 						{location}
@@ -51,10 +49,7 @@ const Index = () => {
 					</Typography>
 				</CardContent>
 			</CardActionArea>
-			{/*Card Expended Area I*/}
 			<Collapse in={isExpanded} timeout="auto">
-				{" "}
-				{/* unmountOnExit  */}
 				<Divider />
 				<CardContent>
 					<Typography variant="h6">Language:</Typography>
@@ -69,11 +64,7 @@ const Index = () => {
 					<Typography variant="body2">{availabilities.join(" ")}</Typography>
 				</CardContent>
 			</Collapse>
-			{/*Card Action Area II*/}
 			<CardActions>
-				{/*<Typography variant="h6">{email}</Typography>*/}
-				{/*Animation mit flip von buttom*/}
-				{/*set title to collapse if open*/}
 				<Tooltip title="Expand">
 					<IconButton
 						aria-expanded={isExpanded}
@@ -85,10 +76,8 @@ const Index = () => {
 						<ExpandMore />
 					</IconButton>
 				</Tooltip>
+				<Typography variant={"button"}>{price} per hour</Typography>
 
-				<Button variant="text" startIcon={<LocalOffer />}>
-					{price} per hour
-				</Button>
 				<Button variant="contained" startIcon={<Message />}>
 					Contact
 				</Button>
