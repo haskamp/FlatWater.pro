@@ -14,7 +14,7 @@ import {
 	TextField,
 } from "@mui/material";
 import { Email, Event, Person, PhotoCamera } from "@mui/icons-material";
-import useStore from "../../ions/store/instructorStore";
+import useStore from "../../ions/store/";
 import useLog from "../../ions/hooks/useLog";
 
 const form = {
@@ -94,23 +94,15 @@ const Form = () => {
 
 	const handleSubmit = ev => {
 		ev.preventDefault();
-		const groups = form.groups.map(group => group.id);
-		console.log(groups);
-		const formData = new FormData(ev.target);
 
+		const formData = new FormData(ev.target);
+		const groups = form.groups.map(group => group.id);
 		const formControls = {};
 		groups.forEach(group => {
 			formControls[group] = formData.getAll(group);
 		});
-
-		//console.log(formControls);
-		//	console.log(formData.getAll("availabilities"));
-		//	console.log(formData.entries());
 		const formValues = Object.fromEntries(formData);
 		const extendedFormValues = { ...formValues, ...formControls };
-
-		//console.log(extendedFormValues);
-
 		setCard(extendedFormValues);
 	};
 
@@ -138,12 +130,6 @@ const Form = () => {
 		languages: handleLanguages,
 		services: handleServices,
 	};
-	/*
-
-	useLog("availabilities", availabilities);
-	useLog("languages", languages);
-	useLog("services", services);
-*/
 
 	return (
 		<div>
@@ -153,6 +139,7 @@ const Form = () => {
 						required
 						variant="outlined"
 						label="Name"
+						name="name"
 						placeholder="Maxi Musterfrau"
 						margin="normal"
 						InputProps={{
@@ -183,6 +170,7 @@ const Form = () => {
 						type="email"
 						variant="outlined"
 						label="Email"
+						name="email"
 						margin="normal"
 						InputProps={{
 							startAdornment: (
@@ -199,7 +187,7 @@ const Form = () => {
 								style={{ display: "none" }}
 								type="file"
 								accept="image/*"
-								name="instructorPhoto"
+								name="photo"
 							/>
 							<Button variant="contained" component="span">
 								Choose photo
@@ -208,9 +196,10 @@ const Form = () => {
 						<label>
 							<input
 								type="file"
+								capture="user"
 								style={{ display: "none" }}
 								accept="image/*"
-								capture="user"
+								name="photo"
 							/>
 							<IconButton aria-label="Take picture">
 								<PhotoCamera />
@@ -224,9 +213,10 @@ const Form = () => {
 						<TextField
 							{...params}
 							required
-							margin="normal"
 							variant="outlined"
 							label="Location"
+							name="location"
+							margin="normal"
 							placeholder="Sankt-Peter-Böhl"
 						/>
 					)}
@@ -237,9 +227,10 @@ const Form = () => {
 						<TextField
 							{...params}
 							required
-							margin="normal"
 							variant="outlined"
 							label="Instructor license"
+							name="license"
+							margin="normal"
 							placeholder="IKO"
 						/>
 					)}
@@ -270,6 +261,7 @@ const Form = () => {
 					rows="1"
 					variant="outlined"
 					label="Your slogan"
+					name="slogan"
 					placeholder="Everyone can surf!"
 					helperText="Enter your personal motto"
 				/>
@@ -278,7 +270,8 @@ const Form = () => {
 					multiline
 					rows="4"
 					variant="outlined"
-					label="About you "
+					label="About you"
+					name="aboutyou"
 					placeholder="I love to surf and to teach - so I teach with passion."
 					helperText="Tell your future student your way to teach."
 				/>
