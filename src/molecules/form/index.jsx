@@ -1,31 +1,21 @@
-import React, { useEffect, useState } from "react";
-import useLog from "../../ions/hooks/useLog";
+import React, { useState } from "react";
 import {
+	Autocomplete,
+	Box,
 	Button,
-	IconButton,
 	Checkbox,
 	FormControlLabel,
 	FormGroup,
+	FormHelperText,
 	FormLabel,
+	IconButton,
 	InputAdornment,
 	Stack,
 	TextField,
-	Box,
-	Autocomplete,
-	FormHelperText,
 } from "@mui/material";
-import { Email, Person, Event, PhotoCamera, PersonPinCircle, Badge } from "@mui/icons-material";
-
-const locations = [
-	{ label: "Fehmarn", id: 1 },
-	{ label: "Rügen", id: 2 },
-	{ label: "Sankt-Peter-Ording", id: 3 },
-];
-const licence = [
-	{ label: "IKO", id: 1 },
-	{ label: "VDWS", id: 2 },
-	{ label: "VDS", id: 3 },
-];
+import { Email, Event, Person, PhotoCamera } from "@mui/icons-material";
+import useStore from "../../ions/store/instructorStore";
+import useLog from "../../ions/hooks/useLog";
 
 const form = {
 	groups: [
@@ -68,8 +58,20 @@ const form = {
 };
 
 const Form = () => {
-	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
+	const locations = [
+		{ label: "Fehmarn", id: 1 },
+		{ label: "Rügen", id: 2 },
+		{ label: "Sankt-Peter-Ording", id: 3 },
+	];
+	const licence = [
+		{ label: "IKO", id: 1 },
+		{ label: "VDWS", id: 2 },
+		{ label: "VDS", id: 3 },
+	];
+	const cards = useStore(state => state.cards);
+	const setCard = useStore(state => state.setCard);
+	useLog("cards", cards);
+
 	const [availabilities, setAvailabilities] = useState({
 		mon: false,
 		tue: false,
@@ -92,6 +94,24 @@ const Form = () => {
 
 	const handleSubmit = ev => {
 		ev.preventDefault();
+		const groups = form.groups.map(group => group.id);
+		console.log(groups);
+		const formData = new FormData(ev.target);
+
+		const formControls = {};
+		groups.forEach(group => {
+			formControls[group] = formData.getAll(group);
+		});
+
+		//console.log(formControls);
+		//	console.log(formData.getAll("availabilities"));
+		//	console.log(formData.entries());
+		const formValues = Object.fromEntries(formData);
+		const extendedFormValues = { ...formValues, ...formControls };
+
+		//console.log(extendedFormValues);
+
+		setCard(extendedFormValues);
 	};
 
 	const handleLanguages = event => {
@@ -118,20 +138,22 @@ const Form = () => {
 		languages: handleLanguages,
 		services: handleServices,
 	};
+	/*
 
 	useLog("availabilities", availabilities);
 	useLog("languages", languages);
 	useLog("services", services);
+*/
 
 	return (
 		<div>
-			<form noValidate onSubmit={handleSubmit}>
+			<form noValidate onSubmit={ev => handleSubmit(ev)}>
 				<Stack maxWidth="350px">
 					<TextField
 						required
 						variant="outlined"
 						label="Name"
-						//placeholder="Maxi Musterfrau"
+						placeholder="Maxi Musterfrau"
 						margin="normal"
 						InputProps={{
 							startAdornment: (
@@ -147,6 +169,7 @@ const Form = () => {
 						variant="outlined"
 						label="Date of birth"
 						margin="normal"
+						name="date"
 						InputProps={{
 							startAdornment: (
 								<InputAdornment position="start">
@@ -195,7 +218,6 @@ const Form = () => {
 						</label>
 					</Box>
 				</Stack>
-
 				<Autocomplete
 					options={locations}
 					renderInput={params => (
@@ -206,13 +228,6 @@ const Form = () => {
 							variant="outlined"
 							label="Location"
 							placeholder="Sankt-Peter-Böhl"
-							InputProps={{
-								startAdornment: (
-									<InputAdornment position="start">
-										<PersonPinCircle />
-									</InputAdornment>
-								),
-							}}
 						/>
 					)}
 				/>
@@ -226,13 +241,6 @@ const Form = () => {
 							variant="outlined"
 							label="Instructor license"
 							placeholder="IKO"
-							InputProps={{
-								startAdornment: (
-									<InputAdornment position="start">
-										<Badge />
-									</InputAdornment>
-								),
-							}}
 						/>
 					)}
 				/>
@@ -246,6 +254,7 @@ const Form = () => {
 									key={field.id}
 									checked={field.id[field.value]}
 									value={field.value}
+									name={group.id}
 									control={<Control />}
 									label={field.label}
 								/>
