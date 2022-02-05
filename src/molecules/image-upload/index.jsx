@@ -1,8 +1,8 @@
 import { Box, Button, IconButton } from "@mui/material";
-import { PhotoCamera } from "@mui/icons-material";
 import React from "react";
+import { PhotoCamera } from "@mui/icons-material";
 
-const PhotoUpload = () => {
+const ImageUpload = () => {
 	return (
 		<Box>
 			<label>
@@ -11,10 +11,11 @@ const PhotoUpload = () => {
 					style={{ display: "none" }}
 					type="file"
 					accept="image/*"
-					name="photo"
+					name="image"
+					/*onChange={ev => handleCapture(ev)}*/
 				/>
 				<Button variant="contained" component="span">
-					Choose photo
+					Choose image
 				</Button>
 			</label>
 			<label>
@@ -23,7 +24,7 @@ const PhotoUpload = () => {
 					capture="user"
 					style={{ display: "none" }}
 					accept="image/*"
-					name="photo"
+					name="image"
 				/>
 				<IconButton aria-label="Take picture">
 					<PhotoCamera />
@@ -33,4 +34,4 @@ const PhotoUpload = () => {
 	);
 };
 
-export default PhotoUpload;
+export default ImageUpload;
