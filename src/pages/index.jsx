@@ -2,7 +2,9 @@ import Head from "next/head";
 import React from "react";
 import useGet from "../ions/hooks/fetch/get";
 import Layout from "../organisms/layout";
-import Card from "../molecules/card/index.jsx";
+import Form from "../organisms/form/index.jsx";
+
+import CardCollection from "../organisms/card";
 
 const Page = () => {
 	const { data, loading, error } = useGet("/api/hello");
@@ -13,7 +15,7 @@ const Page = () => {
 				<title key="title">My capstone project</title>
 				<meta key="description" name="description" content="This is my capstone project" />
 			</Head>
-			<h1>Homep</h1>
+			<h1>Homepage</h1>
 			{loading && <div>Loading...</div>}
 			{error && <div>{error.message}</div>}
 			{data && (
@@ -21,7 +23,9 @@ const Page = () => {
 					<code>{JSON.stringify(data, null, 4)}</code>
 				</pre>
 			)}
-			<Card/>
+
+			<CardCollection />
+			<Form />
 		</Layout>
 	);
 };

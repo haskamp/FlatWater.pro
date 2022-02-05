@@ -4,7 +4,7 @@ import useStore from "../../ions/store";
 
 import CardAvailabilities from "../card-availabilities";
 import CardLanguages from "../card-languages";
-import CardServices from "../card-languages/card-services";
+import CardServices from "../card-services";
 
 const CardExtendedContext = ({ index }) => {
 	const cards = useStore(state => state.cards);
