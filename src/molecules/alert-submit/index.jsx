@@ -1,14 +1,21 @@
 import { Alert, AlertTitle, Snackbar } from "@mui/material";
 import React from "react";
+import useStore from "../../ions/store";
 
-const AlertSubmit = ({ isSubmitted, setSubmit }) => {
+const AlertSubmit = () => {
+	const setSubmitStatus = useStore(state => state.setSubmitStatus);
+	const submitStatus = useStore(state => state.submitStatus);
 	return (
-		<Snackbar open={isSubmitted} autoHideDuration={7000} onClose={() => setSubmit(false)}>
+		<Snackbar
+			open={submitStatus}
+			autoHideDuration={7000}
+			onClose={() => setSubmitStatus(false)}
+		>
 			<Alert
 				severity="success"
 				variant="filled"
 				onClose={() => {
-					setSubmit(false);
+					setSubmitStatus(false);
 				}}
 			>
 				<AlertTitle>Submitted</AlertTitle>
