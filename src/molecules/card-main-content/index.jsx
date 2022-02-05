@@ -5,7 +5,7 @@ import React from "react";
 const CardMainContent = ({ card }) => {
 	return (
 		<CardActionArea style={{ position: "relative" }}>
-			{/*<CardMedia component="img" image={card.photo} alt={`Kite-Instructor ${card.name}`} />*/}
+			<CardMedia component="img" image={card.image} alt={`Kite-Instructor ${card.name}`} />
 			<CardContent>
 				<Typography variant="h4">{card.name}</Typography>
 				<Typography variant="h6">
