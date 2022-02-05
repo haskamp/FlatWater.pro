@@ -2,11 +2,11 @@ import React from "react";
 import { Button } from "@mui/material";
 import useStore from "/src/ions/store/index.jsx";
 
-import formTemplateCheckbox from "src/ions/templates/form/index.js";
-import FormBasic from "src/organisms/form-basic/index.jsx";
-import FormLesson from "src/organisms/form-lesson/index.jsx";
-import FormAbout from "src/organisms/form-about/index.jsx";
-import AlertSubmit from "src/molecules/alert-submit/index.jsx";
+import formTemplateCheckbox from "/src/ions/templates/form/index.js";
+import FormBasic from "/src/organisms/form-basic/index.jsx";
+import FormLesson from "/src/organisms/form-lesson/index.jsx";
+import FormAbout from "/src/organisms/form-about/index.jsx";
+import AlertSubmit from "/src/molecules/alert-submit/index.jsx";
 
 const Form = () => {
 	const setCard = useStore(state => state.setCard);

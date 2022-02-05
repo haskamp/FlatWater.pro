@@ -4,7 +4,7 @@ import useStore from "/src/ions/store/index.jsx";
 
 import CardAvailabilities from "/src/molecules/card-availabilities/index.jsx";
 import CardLanguages from "/src/molecules/card-languages/index.jsx";
-import CardServices from "src/molecules/card-services/index.jsx";
+import CardServices from "/src/molecules/card-services/index.jsx";
 
 const CardExtendedContext = ({ index }) => {
 	const cards = useStore(state => state.cards);
