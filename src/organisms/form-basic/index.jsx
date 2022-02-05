@@ -1,7 +1,6 @@
 import { InputAdornment, Stack, TextField } from "@mui/material";
-import { Email, Event, Person } from "@mui/icons-material";
+import { Email, Event, Person, PhotoCamera } from "@mui/icons-material";
 import React from "react";
-import PhotoUpload from "../photo-upload";
 
 const FormBasic = () => {
 	return (
@@ -51,7 +50,21 @@ const FormBasic = () => {
 					),
 				}}
 			/>
-			<PhotoUpload />
+			<TextField
+				required
+				type="url"
+				variant="outlined"
+				label="Profile picture"
+				name="image"
+				margin="normal"
+				InputProps={{
+					startAdornment: (
+						<InputAdornment position="start">
+							<PhotoCamera />
+						</InputAdornment>
+					),
+				}}
+			/>
 		</Stack>
 	);
 };
