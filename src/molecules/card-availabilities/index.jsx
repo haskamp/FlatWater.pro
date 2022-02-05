@@ -1,6 +1,6 @@
 import { Box, Button, ButtonGroup } from "@mui/material";
 import React from "react";
-import useStore from "../../ions/store";
+import useStore from "/src/ions/store/index.jsx";
 
 const weekdays = ["man", "tue", "wed", "thu", "fri", "sat", "sun"];
 

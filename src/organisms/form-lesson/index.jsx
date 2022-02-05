@@ -7,7 +7,7 @@ import {
 	Stack,
 	TextField,
 } from "@mui/material";
-import formTemplateCheckbox, { license, locations } from "../../ions/templates/form";
+import formTemplateCheckbox, { license, locations } from "/src/ions/templates/form/index.js";
 import React, { useState } from "react";
 
 const FormKite = () => {

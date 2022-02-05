@@ -1,4 +1,4 @@
-import useStore from "../../ions/store";
+import useStore from "src/molecules/card-services/index.jsx";
 import { Divider, Stack } from "@mui/material";
 import React from "react";
 import { Accessibility, AirportShuttle, Kitesurfing } from "@mui/icons-material";

@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 import Image from "next/image";
 import React from "react";
-import useStore from "../../ions/store";
+import useStore from "/src/molecules/card-services/index.jsx";
 
 const flags = {
 	ger: "https://cdn-icons-png.flaticon.com/512/197/197571.png",

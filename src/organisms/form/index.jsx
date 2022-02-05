@@ -1,16 +1,14 @@
 import React from "react";
 import { Button } from "@mui/material";
-import useStore from "../../ions/store";
+import useStore from "/src/ions/store/index.jsx";
 
-import formTemplateCheckbox from "../../ions/templates/form";
-import FormBasic from "../form-basic";
-import FormLesson from "../form-lesson";
-import FormAbout from "../form-about";
-import useLog from "../../ions/hooks/useLog";
-import AlertSubmit from "../../molecules/alert-submit";
+import formTemplateCheckbox from "src/ions/templates/form/index.js";
+import FormBasic from "src/organisms/form-basic/index.jsx";
+import FormLesson from "src/organisms/form-lesson/index.jsx";
+import FormAbout from "src/organisms/form-about/index.jsx";
+import AlertSubmit from "src/molecules/alert-submit/index.jsx";
 
 const Form = () => {
-	const cards = useStore(state => state.cards);
 	const setCard = useStore(state => state.setCard);
 	const setSubmitStatus = useStore(state => state.setSubmitStatus);
 
@@ -32,7 +30,6 @@ const Form = () => {
 		setSubmitStatus(true);
 	};
 
-	useLog("cards", cards);
 	return (
 		<div>
 			<form noValidate encType="multipart/form-data" onSubmit={ev => handleSubmit(ev)}>

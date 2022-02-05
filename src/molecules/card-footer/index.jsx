@@ -1,7 +1,7 @@
 import { Button, CardActions, IconButton, Tooltip, Typography } from "@mui/material";
 import { ExpandMore, Message } from "@mui/icons-material";
 import React from "react";
-import useStore from "../../ions/store";
+import useStore from "/src/molecules/card-services/index.jsx";
 
 const CardFooter = ({ index }) => {
 	const setExpanded = useStore(state => state.setExpanded);

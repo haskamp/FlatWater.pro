@@ -12,7 +12,7 @@ const formTemplateCheckbox = {
 		{
 			id: "availabilities",
 			legend: "Your availabilities",
-			helperText: "When are free to teach?",
+			helperText: "When are you free to teach?",
 			fields: [
 				{ id: "mon", value: "mon", type: "checkbox", label: "Mon" },
 				{ id: "tue", value: "tue", type: "checkbox", label: "Tue" },

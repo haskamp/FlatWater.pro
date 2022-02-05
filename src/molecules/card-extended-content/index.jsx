@@ -1,10 +1,10 @@
 import { CardContent, Collapse, Divider, Stack, Typography } from "@mui/material";
 import React from "react";
-import useStore from "../../ions/store";
+import useStore from "/src/ions/store/index.jsx";
 
-import CardAvailabilities from "../card-availabilities";
-import CardLanguages from "../card-languages";
-import CardServices from "../card-services";
+import CardAvailabilities from "/src/molecules/card-availabilities/index.jsx";
+import CardLanguages from "/src/molecules/card-languages/index.jsx";
+import CardServices from "src/molecules/card-services/index.jsx";
 
 const CardExtendedContext = ({ index }) => {
 	const cards = useStore(state => state.cards);

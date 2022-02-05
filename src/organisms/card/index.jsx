@@ -1,9 +1,9 @@
 import React from "react";
 import { Card } from "@mui/material";
-import useStore from "../../ions/store";
-import CardFooter from "../../molecules/card-footer";
-import CardExtendedContent from "../../molecules/card-extended-content";
-import CardMainContent from "../../molecules/card-main-content";
+import useStore from "/src/molecules/card-services/index.jsx";
+import CardFooter from "/src/molecules/card-footer/index.jsx";
+import CardExtendedContent from "/src/molecules/card-extended-content/index.jsx";
+import CardMainContent from "/src/molecules/card-main-content/index.jsx";
 
 const CardCollection = () => {
 	const cards = useStore(state => state.cards);
