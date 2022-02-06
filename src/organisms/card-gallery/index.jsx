@@ -4,7 +4,7 @@ import useStore from "/src/ions/store/index.jsx";
 import CardProfile from "../card";
 import CardChip from "../card-chip";
 import { ButtonGroup, IconButton, Tooltip } from "@mui/material";
-import { ExpandMore } from "@mui/icons-material";
+import { AccountBox, ViewAgenda } from "@mui/icons-material";
 
 const CardGallery = () => {
 	const view = useStore(state => state.view);
@@ -20,7 +20,7 @@ const CardGallery = () => {
 							setView("profile");
 						}}
 					>
-						<ExpandMore />
+						<AccountBox />
 					</IconButton>
 				</Tooltip>
 				<Tooltip title="Expand">
@@ -30,11 +30,12 @@ const CardGallery = () => {
 							setView("chip");
 						}}
 					>
-						<ExpandMore />
+						<ViewAgenda />
 					</IconButton>
 				</Tooltip>
 			</ButtonGroup>
-			;{view ? <CardProfile /> : <CardChip />}
+			{view === "profile" && <CardProfile />}
+			{view === "chip" && <CardChip />}
 		</div>
 	);
 };
