@@ -5,12 +5,7 @@ import Layout from "../organisms/layout";
 import Form from "../organisms/form/index.jsx";
 
 import CardGallery from "../organisms/card-gallery";
-<<<<<<< Updated upstream
 
-=======
-import useStore from "/src/ions/store/index.jsx";
-import CardChip from "../organisms/card-chip";
->>>>>>> Stashed changes
 const Page = () => {
 	const { data, loading, error } = useGet("/api/hello");
 
@@ -28,8 +23,8 @@ const Page = () => {
 					<code>{JSON.stringify(data, null, 4)}</code>
 				</pre>
 			)}
-			<Form />
 			<CardGallery />
+			<Form />
 		</Layout>
 	);
 };
