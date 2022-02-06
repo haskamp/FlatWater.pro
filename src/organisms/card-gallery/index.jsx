@@ -1,26 +1,40 @@
 import React from "react";
-import { Card } from "@mui/material";
 import useStore from "/src/ions/store/index.jsx";
-import CardFooter from "/src/molecules/card-footer/index.jsx";
-import CardExtendedContent from "/src/molecules/card-extended-content/index.jsx";
-import CardMainContent from "/src/molecules/card-main-content/index.jsx";
+
+import CardProfile from "../card";
+import CardChip from "../card-chip";
+import { ButtonGroup, IconButton, Tooltip } from "@mui/material";
+import { ExpandMore } from "@mui/icons-material";
 
 const CardGallery = () => {
-	const cards = useStore(state => state.cards);
+	const view = useStore(state => state.view);
+	const setView = useStore(state => state.setView);
 
 	return (
 		<div>
-			{cards.map((card, index) => {
-				return (
-					<div>
-						<Card key={card.id} sx={{ maxWidth: 350 }}>
-							<CardMainContent card={card} />
-							<CardExtendedContent index={index} />
-							<CardFooter index={index} />
-						</Card>
-					</div>
-				);
-			})}
+			<ButtonGroup>
+				<Tooltip title="Expand">
+					<IconButton
+						aria-label="show more"
+						onClick={() => {
+							setView("profile");
+						}}
+					>
+						<ExpandMore />
+					</IconButton>
+				</Tooltip>
+				<Tooltip title="Expand">
+					<IconButton
+						aria-label="show more"
+						onClick={() => {
+							setView("chip");
+						}}
+					>
+						<ExpandMore />
+					</IconButton>
+				</Tooltip>
+			</ButtonGroup>
+			;{view ? <CardProfile /> : <CardChip />}
 		</div>
 	);
 };

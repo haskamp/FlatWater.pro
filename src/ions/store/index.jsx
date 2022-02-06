@@ -23,6 +23,8 @@ const useStore = create(set => {
 			),
 		submitStatus: false,
 		setSubmitStatus: status => set({ submitStatus: status }),
+		view: "profile",
+		setView: setting => set({ view: setting }),
 	};
 });
 
