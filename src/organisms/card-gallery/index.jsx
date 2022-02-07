@@ -7,6 +7,16 @@ import GalleryButton from "../../molecules/gallery-button";
 
 const CardGallery = () => {
 	const view = useStore(state => state.view);
+	const filterLocation = useStore(state => state.filterLocation);
+
+	/*	if (card.location.includes(filterLocation)) {
+		{view === "profile" && <CardProfile />}
+		{view === "chip" && <CardChip />}
+	} else {
+		{view === "profile" && <CardProfile />}
+		{view === "chip" && <CardChip />}
+	}
+	*/
 
 	return (
 		<div>

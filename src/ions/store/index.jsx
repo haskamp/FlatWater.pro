@@ -25,6 +25,8 @@ const useStore = create(set => {
 		setSubmitStatus: status => set({ submitStatus: status }),
 		view: "profile",
 		setView: setting => set({ view: setting }),
+		filterLocation: "",
+		setFilterLocation: "",
 	};
 });
 

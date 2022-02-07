@@ -3,3 +3,6 @@
 
 ## Issues closed
 <!-- List closed issues here -->
+
+## Feature sketch
+<!-- List Feature sketch here -->
