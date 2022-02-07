@@ -1,7 +1,7 @@
 import { ButtonGroup, IconButton, Tooltip } from "@mui/material";
 import { AccountBox, ViewAgenda } from "@mui/icons-material";
 import React from "react";
-import useStore from "../../ions/store";
+import useStore from "/src/ions/store";
 
 const GalleryButton = () => {
 	const setView = useStore(state => state.setView);

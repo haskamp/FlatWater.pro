@@ -1,7 +1,7 @@
 import Head from "next/head";
 import React from "react";
 import Layout from "/src/organisms/layout";
-import CardGallery from "/src/organisms/card-gallery";
+import CardGallery from "/src/organisms/gallery";
 
 const Page = () => {
 	return (

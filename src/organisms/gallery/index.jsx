@@ -9,8 +9,8 @@ import { Stack } from "@mui/material";
 const CardGallery = () => {
 	const view = useStore(state => state.view);
 	const cards = useStore(state => state.cards);
-	let filterStatus = useStore(state => state.filterStatus);
-	let filteredCards = useStore(state => state.filteredCards);
+	const filterStatus = useStore(state => state.filterStatus);
+	const filteredCards = useStore(state => state.filteredCards);
 
 	return (
 		<div>
