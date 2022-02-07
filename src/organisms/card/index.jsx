@@ -1,16 +1,13 @@
 import { Card } from "@mui/material";
-import CardMainContent from "../../molecules/card-main-content";
-import CardExtendedContent from "../../molecules/card-extended-content";
-import CardFooter from "../../molecules/card-footer";
+import CardMainContent from "/src/molecules/card-main-content";
+import CardExtendedContent from "/src/molecules/card-extended-content";
+import CardFooter from "/src/molecules/card-footer";
 import React from "react";
-import useStore from "../../ions/store";
 
-const CardProfile = () => {
-	const cards = useStore(state => state.cards);
-
+const CardProfile = ({ input }) => {
 	return (
 		<div>
-			{cards.map((card, index) => {
+			{input.map((card, index) => {
 				return (
 					<Card key={card.id} sx={{ maxWidth: 350 }}>
 						<CardMainContent card={card} />

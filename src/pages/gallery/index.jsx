@@ -1,6 +1,7 @@
 import Head from "next/head";
 import React from "react";
-import Layout from "../../organisms/layout";
+import Layout from "/src/organisms/layout";
+import CardGallery from "/src/organisms/gallery";
 
 const Page = () => {
 	return (
@@ -9,7 +10,8 @@ const Page = () => {
 				<title key="title">About</title>
 				<meta key="description" name="description" content="About" />
 			</Head>
-			<h1>About</h1>
+			<h1>Gallery</h1>
+			<CardGallery />
 		</Layout>
 	);
 };

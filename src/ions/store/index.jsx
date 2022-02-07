@@ -15,12 +15,23 @@ const useStore = create(set => {
 					});
 				})
 			),
+		filteredCards: [],
+		setFilteredCards: filter =>
+			set(
+				produce(state => {
+					state.filteredCards = state.cards.filter(card =>
+						card.location.includes(filter)
+					);
+				})
+			),
 		setExpanded: index =>
 			set(
 				produce(state => {
 					state.cards[index].isExpanded = !state.cards[index].isExpanded;
 				})
 			),
+		filterStatus: false,
+		setFilterStatus: status => set({ filterStatus: status }),
 		submitStatus: false,
 		setSubmitStatus: status => set({ submitStatus: status }),
 		view: "profile",
