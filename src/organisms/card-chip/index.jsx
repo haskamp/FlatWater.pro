@@ -1,11 +1,10 @@
 import React from "react";
 import { Card } from "@mui/material";
-import useStore from "/src/molecules/card-services/index.jsx";
-import CardFooter from "/src/molecules/card-footer/index.jsx";
+import useStore from "/src/ions/store/index.jsx";
 import CardExtendedContent from "/src/molecules/card-extended-content/index.jsx";
-import CardMainContent from "/src/molecules/card-main-content/index.jsx";
+import CardChipMain from "../../molecules/card-chip-main";
 
-const CardCollection = () => {
+const CardChip = () => {
 	const cards = useStore(state => state.cards);
 
 	return (
@@ -13,9 +12,8 @@ const CardCollection = () => {
 			{cards.map((card, index) => {
 				return (
 					<Card key={card.id} sx={{ maxWidth: 350 }}>
-						<CardMainContent card={card} />
+						<CardChipMain card={card} index={index} />
 						<CardExtendedContent index={index} />
-						<CardFooter index={index} />
 					</Card>
 				);
 			})}
@@ -23,4 +21,4 @@ const CardCollection = () => {
 	);
 };
 
-export default CardCollection;
+export default CardChip;

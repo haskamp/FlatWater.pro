@@ -1,26 +1,18 @@
 import React from "react";
-import { Card } from "@mui/material";
 import useStore from "/src/ions/store/index.jsx";
-import CardFooter from "/src/molecules/card-footer/index.jsx";
-import CardExtendedContent from "/src/molecules/card-extended-content/index.jsx";
-import CardMainContent from "/src/molecules/card-main-content/index.jsx";
+
+import CardProfile from "../card";
+import CardChip from "../card-chip";
+import GalleryButton from "../../molecules/gallery-button";
 
 const CardGallery = () => {
-	const cards = useStore(state => state.cards);
+	const view = useStore(state => state.view);
 
 	return (
 		<div>
-			{cards.map((card, index) => {
-				return (
-					<div>
-						<Card key={card.id} sx={{ maxWidth: 350 }}>
-							<CardMainContent card={card} />
-							<CardExtendedContent index={index} />
-							<CardFooter index={index} />
-						</Card>
-					</div>
-				);
-			})}
+			<GalleryButton />
+			{view === "profile" && <CardProfile />}
+			{view === "chip" && <CardChip />}
 		</div>
 	);
 };
