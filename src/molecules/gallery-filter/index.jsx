@@ -9,10 +9,10 @@ import {
 	ListItemAvatar,
 	ListItemText,
 } from "@mui/material";
-import PropTypes from "prop-types";
-import { AddLocation, Map } from "@mui/icons-material";
-import { locations } from "src/ions/templates/form";
-import useStore from "src/ions/store";
+
+import { FilterList, LocationOff, Map } from "@mui/icons-material";
+import { locations } from "/src/ions/templates/form";
+import useStore from "/src/ions/store";
 
 const FilterDialog = props => {
 	const { onClose, selectedValue, open } = props;
@@ -44,13 +44,13 @@ const FilterDialog = props => {
 					</ListItem>
 				))}
 
-				<ListItem autoFocus button onClick={() => handleListItemClick("addLocation")}>
+				<ListItem autoFocus button onClick={() => handleListItemClick(false)}>
 					<ListItemAvatar>
 						<Avatar>
-							<AddLocation />
+							<LocationOff />
 						</Avatar>
 					</ListItemAvatar>
-					<ListItemText primary="Add location" />
+					<ListItemText primary="Delete Filter" />
 				</ListItem>
 			</List>
 		</Dialog>
@@ -60,13 +60,9 @@ const FilterDialog = props => {
 const GalleryFilter = () => {
 	const [open, setOpen] = useState(false);
 	const [selectedValue, setSelectedValue] = useState(locations[1].label);
-	const setFilterLocation = useStore(state => state.setFilterLocation);
+	const setFilteredCards = useStore(state => state.setFilteredCards);
+	const setFilterStatus = useStore(state => state.setFilterStatus);
 
-	FilterDialog.propTypes = {
-		onClose: PropTypes.func.isRequired,
-		open: PropTypes.bool.isRequired,
-		selectedValue: PropTypes.string.isRequired,
-	};
 	const handleClickOpen = () => {
 		setOpen(true);
 	};
@@ -74,11 +70,12 @@ const GalleryFilter = () => {
 	const handleClose = value => {
 		setOpen(false);
 		setSelectedValue(value);
-		setFilterLocation(value);
+		setFilteredCards(value);
+		value ? setFilterStatus(true) : setFilterStatus(false);
 	};
 	return (
 		<div>
-			<Button variant="contained" onClick={handleClickOpen}>
+			<Button variant="contained" startIcon={<FilterList />} onClick={handleClickOpen}>
 				Filter
 			</Button>
 			<FilterDialog selectedValue={selectedValue} open={open} onClose={handleClose} />

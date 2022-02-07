@@ -3,26 +3,24 @@ import useStore from "/src/ions/store/index.jsx";
 
 import CardProfile from "../card";
 import CardChip from "../card-chip";
-import GalleryButton from "../../molecules/gallery-button";
-
+import GalleryButton from "/src/molecules/gallery-button";
+import GalleryFilter from "/src/molecules/gallery-filter/index.jsx";
+import { Stack } from "@mui/material";
 const CardGallery = () => {
 	const view = useStore(state => state.view);
-	const filterLocation = useStore(state => state.filterLocation);
-
-	/*	if (card.location.includes(filterLocation)) {
-		{view === "profile" && <CardProfile />}
-		{view === "chip" && <CardChip />}
-	} else {
-		{view === "profile" && <CardProfile />}
-		{view === "chip" && <CardChip />}
-	}
-	*/
+	const cards = useStore(state => state.cards);
+	let filterStatus = useStore(state => state.filterStatus);
+	let filteredCards = useStore(state => state.filteredCards);
 
 	return (
 		<div>
-			<GalleryButton />
-			{view === "profile" && <CardProfile />}
-			{view === "chip" && <CardChip />}
+			<Stack direction="row">
+				<GalleryFilter />
+				<GalleryButton />
+			</Stack>
+
+			{view === "profile" && <CardProfile input={filterStatus ? filteredCards : cards} />}
+			{view === "chip" && <CardChip input={filterStatus ? filteredCards : cards} />}
 		</div>
 	);
 };
