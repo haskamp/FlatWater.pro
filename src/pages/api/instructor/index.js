@@ -1,8 +1,6 @@
 import mongoose from "mongoose";
 import process from "node:process";
-import Todo from "/src/ions/models/data.model.js";
-
-const uri = process.env.MONGODB_URI;
+import Todo from "/src/ions/models/todo.model.js";
 
 const connect = async uri => {
 	try {
@@ -10,9 +8,9 @@ const connect = async uri => {
 		await mongoose.connect(uri);
 	} catch (error_) {
 		console.error(error_);
-		throw new Error(error_);
 	}
 };
+const uri = process.env.MONGODB_URI;
 void connect(uri);
 
 const handler = async (request, response, next) => {
@@ -23,6 +21,16 @@ const handler = async (request, response, next) => {
 			try {
 				const mongoResponse = await Todo.find();
 				response.status(200).json(mongoResponse);
+			} catch (err) {
+				next(err);
+			}
+			break;
+		case "POST":
+			try {
+				/*const data = new Todo({ name: "testneu", isChecked: false });
+				await data.save();
+				await Todo.create({ name: "testneu2", isChecked: false });
+				response.status(200).send("sucess");*/
 			} catch (err) {
 				next(err);
 			}
