@@ -24,10 +24,15 @@ const Form = () => {
 			formControls[group] = formData.getAll(group); // gets all "values" of Form by "id"
 		});
 
-		const extendedFormValues = { ...formValues, ...formControls };
+		const combinedFormValues = { ...formValues, ...formControls };
 
-		setCard(extendedFormValues);
+		setCard(combinedFormValues);
 		setSubmitStatus(true);
+		fetch("http://localhost:4000/cards", {
+			method: "POST",
+			headers: { "Content-type": "application/json" },
+			body: JSON.stringify(combinedFormValues),
+		});
 	};
 
 	return (
