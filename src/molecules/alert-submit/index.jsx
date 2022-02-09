@@ -8,7 +8,7 @@ const AlertSubmit = () => {
 	return (
 		<Snackbar
 			open={submitStatus}
-			autoHideDuration={7000}
+			autoHideDuration={1000}
 			onClose={() => setSubmitStatus(false)}
 		>
 			<Alert

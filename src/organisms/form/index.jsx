@@ -1,12 +1,12 @@
 import React from "react";
 import { Button } from "@mui/material";
 import useStore from "/src/ions/store/index.jsx";
-
 import formTemplateCheckbox from "/src/ions/templates/form/index.js";
 import FormBasic from "/src/organisms/form-basic/index.jsx";
 import FormLesson from "/src/organisms/form-lesson/index.jsx";
 import FormAbout from "/src/organisms/form-about/index.jsx";
 import AlertSubmit from "/src/molecules/alert-submit/index.jsx";
+import axios from "axios";
 
 const Form = () => {
 	const setCard = useStore(state => state.setCard);
@@ -28,10 +28,8 @@ const Form = () => {
 
 		setCard(combinedFormValues);
 		setSubmitStatus(true);
-		fetch("http://localhost:4000/cards", {
-			method: "POST",
-			headers: { "Content-type": "application/json" },
-			body: JSON.stringify(combinedFormValues),
+		axios.post("/api/instructors", combinedFormValues).then(response => {
+			console.log("text: axios.post", response);
 		});
 	};
 
