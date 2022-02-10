@@ -1,4 +1,4 @@
-import dbConnect from "/src/ions/database";
+import dbConnect from "/src/server/database";
 import Instructor from "/src/ions/models/instructor.model.js";
 
 const handler = async (request, response) => {
