@@ -44,7 +44,7 @@ const Map = () => {
 		iconAnchor: [12, 0],
 	});
 
-	const [userLocation, setUserLocation] = useState([54.57532, 10.01534]);
+	const [userLocation, setUserLocation] = useState([55.57532, 10.01534]);
 	useEffect(() => {
 		const success = position => {
 			setUserLocation([position.coords.latitude, position.coords.longitude]);
@@ -55,29 +55,38 @@ const Map = () => {
 		navigator.geolocation.getCurrentPosition(success, error, { enableHighAccuracy: true });
 	}, [userLocation]);
 
+	const locations = [
+		{ label: "Fehmarn", coords: [54.4378, 11.19352] },
+		{ label: "Rügen", coords: [54.416665, 13.3999984] },
+		{ label: "Sankt-Peter-Ording", coords: [54.304167, 8.651111] },
+	];
+
 	return (
 		<div>
 			<MapContainer
+				scrollWheelZoom
 				style={{ height: "400px", width: "400px" }}
 				center={userLocation}
 				zoom={[1]}
-				scrollWheelZoom={false}
 			>
 				<MapConsumer>
 					{map => {
 						map.flyTo(userLocation, 7);
+
 						return null;
 					}}
 				</MapConsumer>
 				<TileLayer url={mapAPI} attribution="Pixelass&MarCO@neuefische+MarcKlein" />
-
-				<Marker draggable animate position={[50.233334, 6.0]} icon={markerIcon}>
-					<Popup>You are here</Popup>
-				</Marker>
-
 				<Marker animate position={userLocation} icon={markerUserIcon}>
 					<Popup>You are here</Popup>
 				</Marker>
+				{locations.map(location => {
+					return (
+						<Marker key={location.label} position={location.coords} icon={markerIcon}>
+							<Popup>{location.label}</Popup>
+						</Marker>
+					);
+				})}
 			</MapContainer>
 		</div>
 	);
