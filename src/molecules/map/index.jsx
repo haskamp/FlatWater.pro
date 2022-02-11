@@ -4,6 +4,7 @@ import "leaflet/dist/leaflet.css";
 import "leaflet-defaulticon-compatibility/dist/leaflet-defaulticon-compatibility.css";
 import { mapAPI, markerIcon, markerUserIcon, locations } from "/src/ions/templates/map/index.js";
 import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
+import LocateUser from "/src/molecules/map-locateuser";
 
 const Map = () => {
 	const [userLocation, setUserLocation] = useState([54.57532, 10.01534]);
@@ -23,9 +24,10 @@ const Map = () => {
 				scrollWheelZoom
 				style={{ height: "400px", width: "400px" }}
 				center={userLocation}
-				zoom={[7]}
+				zoom={[3]}
 			>
 				<TileLayer url={mapAPI} attribution="Pixelass&MarCO@neuefische+MarcKlein" />
+				<LocateUser />
 				<Marker animate position={userLocation} icon={markerUserIcon}>
 					<Popup>You are here</Popup>
 				</Marker>
