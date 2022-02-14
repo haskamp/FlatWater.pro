@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import process from "node:process";
 
 const MONGODB_URI = process.env.MONGODB_URI;
 
@@ -21,6 +20,7 @@ if (!cached) {
 
 async function dbConnect() {
 	if (cached.connection) {
+		console.log("connected to DB by cache");
 		return cached.connection;
 	}
 
@@ -30,6 +30,7 @@ async function dbConnect() {
 				bufferCommands: false,
 			})
 			.then(mongoose => {
+				console.log("connected to DB by connect");
 				return mongoose;
 			});
 	}

@@ -5,6 +5,18 @@ import produce from "immer";
 const useStore = create(set => {
 	return {
 		cards: [],
+		/*		setInstructors: dbInstructors =>
+			set((dbInstructors, state) =>
+				state.instructors.push({dbInstructors.map(instructor => ({
+						...instructor,*/
+		/*		setInstructors: instructors =>
+			set(state =>
+				state.instructors.push({instructors.map(instructor => ({
+						...instructor,
+						isExpanded: false,
+					}))
+				})
+			),*/
 		setCard: formData =>
 			set(
 				produce(state => {
