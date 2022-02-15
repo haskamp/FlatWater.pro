@@ -2,19 +2,19 @@ import { CardActionArea, CardContent, CardMedia, Typography } from "@mui/materia
 import { LocationOn, Verified } from "@mui/icons-material";
 import React from "react";
 
-const CardMainContent = ({ card }) => {
+const CardMainContent = ({ input }) => {
 	return (
 		<CardActionArea style={{ position: "relative" }}>
-			<CardMedia component="img" image={card.image} alt={`Kite-Instructor ${card.name}`} />
+			<CardMedia component="img" image={input.image} alt={`Kite-Instructor ${input.name}`} />
 			<CardContent>
-				<Typography variant="h4">{card.name}</Typography>
+				<Typography variant="h4">{input.name}</Typography>
 				<Typography variant="h6">
 					<LocationOn />
-					{card.location}
+					{input.location}
 				</Typography>
 				<Typography variant="h6">
 					<Verified />
-					{card.license}
+					{input.license}
 				</Typography>
 			</CardContent>
 		</CardActionArea>

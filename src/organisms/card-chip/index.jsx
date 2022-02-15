@@ -9,7 +9,7 @@ const CardChip = ({ input }, index) => {
 		<div>
 			<Card key={input.id} sx={{ maxWidth: 350 }}>
 				<CardChipMain card={input} index={index} />
-				{/*<CardExtendedContent index={index} />*/}
+				<CardExtendedContent index={index} />
 			</Card>
 		</div>
 	);
