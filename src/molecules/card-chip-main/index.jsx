@@ -14,9 +14,6 @@ import React from "react";
 import useStore from "/src/ions/store/index.jsx";
 
 const CardChipMain = ({ card, index }) => {
-	const setExpanded = useStore(state => state.setExpanded);
-	const cards = useStore(state => state.cards);
-
 	return (
 		<Stack direction="row">
 			<CardActionArea style={{ position: "relative" }}>

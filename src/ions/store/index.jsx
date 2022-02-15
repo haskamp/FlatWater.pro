@@ -30,6 +30,13 @@ const useStore = create(set => {
 					state.cards[index].isExpanded = !state.cards[index].isExpanded;
 				})
 			),
+
+		isExpanded: false,
+		setIsExpanded: () =>
+			set(state => ({
+				isExpanded: !state.isExpanded,
+			})),
+
 		filterStatus: false,
 		setFilterStatus: status => set({ filterStatus: status }),
 		submitStatus: false,

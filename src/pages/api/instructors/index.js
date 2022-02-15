@@ -1,4 +1,4 @@
-import dbConnect from "/src/server/database";
+import dbConnect from "/server/database";
 import Instructor from "/src/ions/models/instructor.model.js";
 
 const handler = async (request, response) => {
@@ -10,6 +10,7 @@ const handler = async (request, response) => {
 	switch (method) {
 		case "GET":
 			try {
+				console.log(request);
 				const mongoResponse = await Instructor.find();
 				response.status(200).json(mongoResponse);
 			} catch (err) {

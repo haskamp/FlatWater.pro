@@ -6,20 +6,20 @@ import CardAvailabilities from "/src/molecules/card-availabilities/index.jsx";
 import CardLanguages from "/src/molecules/card-languages/index.jsx";
 import CardServices from "/src/molecules/card-services/index.jsx";
 
-const CardExtendedContext = ({ index }) => {
-	const cards = useStore(state => state.cards);
+const CardExtendedContext = ({ input }) => {
+	const isExpanded = useStore(state => state.isExpanded);
 	return (
-		<Collapse in={cards[index].isExpanded} timeout="auto">
+		<Collapse in={isExpanded} timeout="auto">
 			<Divider />
 			<CardContent>
 				<Stack direction="row" justifyContent="space-between">
-					<CardServices index={index} />
-					<CardLanguages index={index} />
+					<CardServices input={input} />
+					<CardLanguages input={input} />
 				</Stack>
 				<br />
-				<CardAvailabilities index={index} />
-				<Typography variant="h6">{cards[index].slogan}</Typography>
-				<Typography variant="body2">{cards[index].aboutyou}</Typography>
+				<CardAvailabilities input={input} />
+				<Typography variant="h6">{input.slogan}</Typography>
+				<Typography variant="body2">{input.aboutyou}</Typography>
 			</CardContent>
 		</Collapse>
 	);

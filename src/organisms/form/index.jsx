@@ -25,12 +25,12 @@ const Form = () => {
 		});
 
 		const combinedFormValues = { ...formValues, ...formControls };
-
 		setCard(combinedFormValues);
-		setSubmitStatus(true);
+
 		axios.post("/api/instructors", combinedFormValues).then(response => {
 			console.log("text: axios.post", response);
 		});
+		setSubmitStatus(true);
 	};
 
 	return (

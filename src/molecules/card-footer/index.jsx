@@ -3,18 +3,16 @@ import { ExpandMore, Message } from "@mui/icons-material";
 import React from "react";
 import useStore from "/src/ions/store/index.jsx";
 
-const CardFooter = ({ index }) => {
-	const setExpanded = useStore(state => state.setExpanded);
-	const cards = useStore(state => state.cards);
+const CardFooter = () => {
+	const setIsExpanded = useStore(state => state.setIsExpanded);
 
 	return (
 		<CardActions>
 			<Tooltip title="Expand">
 				<IconButton
-					aria-expanded={cards[index].isExpanded}
 					aria-label="show more"
 					onClick={() => {
-						setExpanded(index);
+						setIsExpanded();
 					}}
 				>
 					<ExpandMore />

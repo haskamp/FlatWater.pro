@@ -1,15 +1,13 @@
 import { Box, Button, ButtonGroup } from "@mui/material";
 import React from "react";
-import useStore from "/src/ions/store/index.jsx";
 
 const weekdays = ["man", "tue", "wed", "thu", "fri", "sat", "sun"];
 
-const CardAvailabilities = ({ index }) => {
-	const cards = useStore(state => state.cards);
+const CardAvailabilities = ({ input }) => {
 	return (
 		<ButtonGroup variant="outline" sx={{ width: "100%" }}>
 			{weekdays.map((day, i) => {
-				const cardAvailabilities = cards[index].availabilities;
+				const cardAvailabilities = input.availabilities;
 				return (
 					<Box
 						key={weekdays[i]}

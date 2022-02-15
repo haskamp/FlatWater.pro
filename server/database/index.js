@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import process from "node:process";
 
 const MONGODB_URI = process.env.MONGODB_URI;
+console.log(MONGODB_URI);
 
 if (!MONGODB_URI) {
 	throw new Error("Please define the MONGODB_URI environment variable inside .env.local");
@@ -21,6 +21,7 @@ if (!cached) {
 
 async function dbConnect() {
 	if (cached.connection) {
+		console.log("connected to DB by cache");
 		return cached.connection;
 	}
 
@@ -30,6 +31,7 @@ async function dbConnect() {
 				bufferCommands: false,
 			})
 			.then(mongoose => {
+				console.log("connected to DB by connect");
 				return mongoose;
 			});
 	}
