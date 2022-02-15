@@ -12,7 +12,7 @@ const Page = ({ dbInstructor }) => {
 	return (
 		<Layout>
 			<Head>
-				<title key="title">CoastCoach || Instructor</title>
+				<title key="title">CoastCoach | Instructor</title>
 				<meta key="description" name="description" content="content" />
 			</Head>
 			<h1>Instructor</h1>
