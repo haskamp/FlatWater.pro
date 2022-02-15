@@ -3,7 +3,6 @@ import React from "react";
 import Layout from "/src/organisms/layout";
 import dbConnect from "/server/database";
 import Instructor from "/src/ions/models/instructor.model";
-
 import { Card } from "@mui/material";
 import CardMainContent from "/src/molecules/card-main-content";
 import CardExtendedContent from "/src/molecules/card-extended-content";
@@ -31,11 +30,11 @@ export default Page;
 export const getStaticPaths = async () => {
 	await dbConnect();
 	try {
-		const data = await Instructor.find();
-		const paths = await data.map(instructor => {
-			return { params: { id: instructor.id }.toString() };
+		const instructors = await Instructor.find();
+		const paths = await instructors.map(instructor => {
+			return { params: { id: instructor._id.valueOf() } };
 		});
-		console.log("paths", paths);
+
 		return {
 			paths,
 			fallback: false,
@@ -45,21 +44,15 @@ export const getStaticPaths = async () => {
 	}
 };
 
-/*export const getStaticProps = async context => {
-	const id = context.params.id;
-
+export const getStaticProps = async ({ params }) => {
+	const id = params.id;
 	await dbConnect();
 	try {
-		const data = await Instructor.findbyId(id);
+		const instructor = await Instructor.findById(id);
 		return {
-			props: { dbInstructor: JSON.parse(JSON.stringify(data)) },
+			props: { dbInstructor: JSON.parse(JSON.stringify(instructor)) },
 		};
 	} catch (err) {
 		console.log(err);
-		return {
-			props: {
-				cards: [],
-			},
-		};
 	}
-};*/
+};

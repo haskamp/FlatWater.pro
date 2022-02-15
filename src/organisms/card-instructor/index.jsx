@@ -4,7 +4,6 @@ import { useRouter } from "next/router";
 
 const CardInstructor = ({ instructor }) => {
 	const router = useRouter();
-	console.log("card", instructor);
 	return (
 		<Card>
 			<CardActionArea

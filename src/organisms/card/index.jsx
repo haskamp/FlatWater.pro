@@ -10,7 +10,7 @@ const CardProfile = ({ input }) => {
 			{input.map((card, index) => {
 				return (
 					<Card key={card.id} sx={{ maxWidth: 350 }}>
-						<CardMainContent card={card} />
+						<CardMainContent input={card} />
 						<CardExtendedContent index={index} />
 						<CardFooter index={index} />
 					</Card>
