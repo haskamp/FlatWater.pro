@@ -7,17 +7,34 @@ import FormLesson from "/src/organisms/form-lesson/index.jsx";
 import FormAbout from "/src/organisms/form-about/index.jsx";
 import AlertSubmit from "/src/molecules/alert-submit/index.jsx";
 import axios from "axios";
+import ImageUpload from "/src/molecules/form-image";
 
 const Form = () => {
 	const setCard = useStore(state => state.setCard);
 	const setSubmitStatus = useStore(state => state.setSubmitStatus);
 
-	const handleSubmit = ev => {
+	const handleSubmit = async ev => {
 		ev.preventDefault();
+
+		const form = ev.target;
+		const imageData = new FormData();
+
+		const imageInput = Array.from(form.elements).find(({ name }) => name === "image");
+		console.log("evtarget", ev.target.elements);
+		console.log("foto", imageInput);
+		for (const image of imageInput.files) {
+			imageData.append("image", image);
+		}
+		imageData.append("upload_preset", "capstone");
+		console.log("formdata after", imageData);
+		await axios
+			.post("https://api.cloudinary.com/v1_1/cluster0/image/upload", imageData)
+			.then(response => {
+				console.log("imgupload", response);
+			});
 
 		const formData = new FormData(ev.target);
 		const formValues = Object.fromEntries(formData);
-
 		const groups = formTemplateCheckbox.groups.map(group => group.id);
 		const formControls = {};
 		groups.forEach(group => {
@@ -35,8 +52,9 @@ const Form = () => {
 
 	return (
 		<div>
-			<form noValidate encType="multipart/form-data" onSubmit={ev => handleSubmit(ev)}>
+			<form onSubmit={ev => handleSubmit(ev)}>
 				<FormBasic />
+				<ImageUpload />
 				<FormLesson />
 				<FormAbout />
 				<Button type="submit" variant="contained">
@@ -49,3 +67,4 @@ const Form = () => {
 };
 
 export default Form;
+// noValidate encType="multipart/form-data"

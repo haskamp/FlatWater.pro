@@ -55,7 +55,7 @@ const FormBasic = () => {
 				type="url"
 				variant="outlined"
 				label="Profile picture"
-				name="image"
+				name="imageurl"
 				margin="normal"
 				InputProps={{
 					startAdornment: (
