@@ -10,32 +10,50 @@ import axios from "axios";
 import ImageUpload from "/src/molecules/form-image";
 
 const Form = () => {
-	const setCard = useStore(state => state.setCard);
 	const setSubmitStatus = useStore(state => state.setSubmitStatus);
+	const preset = "capstone"; // process.env.CLOUDINARY_PRESET;
+	const url = "https://api.cloudinary.com/v1_1/cluster0/image/upload"; // process.env.CLOUDINARY_CLOUD;
 
-	const handleSubmit = async ev => {
-		ev.preventDefault();
-
-		const formData = new FormData(ev.target);
-		const formValues = Object.fromEntries(formData);
+	const handleSubmit = async event => {
+		event.preventDefault();
+		// Textfields
+		const formData = new FormData(event.target);
+		const formText = Object.fromEntries(formData);
+		// Checkboxes
 		const groups = formTemplateCheckbox.groups.map(group => group.id);
-		const formControls = {};
+		const formBoxes = {};
 		groups.forEach(group => {
-			formControls[group] = formData.getAll(group); // gets all "values" of Form by "id"
+			formBoxes[group] = formData.getAll(group); // gets all "values" of Form by "id"
 		});
-
-		const combinedFormValues = { ...formValues, ...formControls };
-		setCard(combinedFormValues);
-
-		axios.post("/api/instructors", combinedFormValues).then(response => {
-			console.log("text: axios.post", response);
+		// Images
+		const files = Array.from(event.target.image.files);
+		// wait until all promises are resolved (when all images have been uploaded)
+		const formResponses = await Promise.all(
+			// returns an array of promises
+			files.map(file => {
+				// creating formdata
+				const imageFormData = new FormData();
+				// append file and preset to formdata
+				imageFormData.append("file", file);
+				imageFormData.append("upload_preset", preset);
+				// send formdata to endpoint
+				return axios.post(url, imageFormData);
+			})
+		);
+		// create new array containing only urls
+		const formImages = formResponses.map(response => {
+			return response.data.url;
 		});
+		// Combine all inputs to object and upload to MongoDB
+		const combinedFormValues = { ...formText, ...formBoxes, images: formImages };
+		await axios.post("/api/instructors", combinedFormValues);
+		// set Status and then call alert
 		setSubmitStatus(true);
 	};
 
 	return (
 		<div>
-			<form onSubmit={ev => handleSubmit(ev)}>
+			<form encType="multipart/form-data" onSubmit={event => handleSubmit(event)}>
 				<FormBasic />
 				<ImageUpload />
 				<FormLesson />
@@ -50,4 +68,3 @@ const Form = () => {
 };
 
 export default Form;
-// noValidate

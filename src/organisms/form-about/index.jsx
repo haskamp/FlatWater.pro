@@ -5,7 +5,7 @@ const FormAbout = () => {
 	return (
 		<Stack maxWidth="350px">
 			<TextField
-				required
+				/*required*/
 				multiline
 				rows="1"
 				variant="outlined"
@@ -15,7 +15,7 @@ const FormAbout = () => {
 				helperText="Enter your personal motto"
 			/>
 			<TextField
-				required
+				/*required*/
 				multiline
 				rows="4"
 				variant="outlined"

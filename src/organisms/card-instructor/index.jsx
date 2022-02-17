@@ -13,7 +13,7 @@ const CardInstructor = ({ instructor }) => {
 			>
 				<CardMedia
 					component="img"
-					image={instructor.image}
+					src={instructor.image}
 					alt={`Kite-Instructor ${instructor.name}`}
 				/>
 			</CardActionArea>

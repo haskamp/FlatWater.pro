@@ -6,6 +6,7 @@ import Instructor from "/src/ions/models/instructor.model";
 import CardInstructor from "/src/organisms/card-instructor";
 
 const Page = ({ dbInstructors }) => {
+	console.log(dbInstructors);
 	return (
 		<Layout>
 			<Head>
@@ -32,7 +33,7 @@ export const getStaticProps = async () => {
 		console.log(err);
 		return {
 			props: {
-				cards: [],
+				dbInstructors: [],
 			},
 		};
 	}
