@@ -16,23 +16,6 @@ const Form = () => {
 	const handleSubmit = async ev => {
 		ev.preventDefault();
 
-		const form = ev.target;
-		const imageData = new FormData();
-
-		const imageInput = Array.from(form.elements).find(({ name }) => name === "image");
-		console.log("evtarget", ev.target.elements);
-		console.log("foto", imageInput);
-		for (const image of imageInput.files) {
-			imageData.append("image", image);
-		}
-		imageData.append("upload_preset", "capstone");
-		console.log("formdata after", imageData);
-		await axios
-			.post("https://api.cloudinary.com/v1_1/cluster0/image/upload", imageData)
-			.then(response => {
-				console.log("imgupload", response);
-			});
-
 		const formData = new FormData(ev.target);
 		const formValues = Object.fromEntries(formData);
 		const groups = formTemplateCheckbox.groups.map(group => group.id);
@@ -67,4 +50,4 @@ const Form = () => {
 };
 
 export default Form;
-// noValidate encType="multipart/form-data"
+// noValidate
