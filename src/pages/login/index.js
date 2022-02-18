@@ -3,7 +3,7 @@ import React from "react";
 import Layout from "/src/organisms/layout";
 import { useSession, signIn, signOut } from "next-auth/react";
 import { Button } from "@mui/material";
-import { GitHub, Image } from "@mui/icons-material";
+import { GitHub, Google } from "@mui/icons-material";
 
 const LogIn = () => {
 	// Sign In/Out Handle with data destructured as session
@@ -18,25 +18,36 @@ const LogIn = () => {
 			<h1>Homepage</h1>
 			{session ? (
 				<div>
-					<Image width="100px" src={session.user.image} alt={session.user.name} />
+					<img width="100px" src={session.user.image} alt={session.user.name} />
+					{/*add link for image in next config */}
 					<h2>{session.user.name}</h2>
 					<Button
 						onClick={() => {
-							signOut("github");
+							signOut("google");
 						}}
 					>
 						LogOut
 					</Button>
 				</div>
 			) : (
-				<Button
-					startIcon={<GitHub />}
-					onClick={() => {
-						signIn("github");
-					}}
-				>
-					LogIn with GitHub
-				</Button>
+				<div>
+					<Button
+						startIcon={<GitHub />}
+						onClick={() => {
+							signIn("github");
+						}}
+					>
+						LogIn with GitHub
+					</Button>
+					<Button
+						startIcon={<Google />}
+						onClick={() => {
+							signIn("google");
+						}}
+					>
+						LogIn with Google
+					</Button>
+				</div>
 			)}
 		</Layout>
 	);
