@@ -1,9 +1,9 @@
 import Head from "next/head";
 import React from "react";
 import Layout from "/src/organisms/layout";
-import { useSession, signIn, signOut } from "next-auth/react";
 import { Button } from "@mui/material";
 import { GitHub, Google } from "@mui/icons-material";
+import { useSession, signIn, signOut } from "next-auth/react";
 
 const LogIn = () => {
 	// Sign In/Out Handle with data destructured as session
