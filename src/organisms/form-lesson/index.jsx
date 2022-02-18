@@ -63,7 +63,7 @@ const FormKite = () => {
 				renderInput={params => (
 					<TextField
 						{...params}
-						required
+						/*required*/
 						variant="outlined"
 						label="Location"
 						name="location"
@@ -77,7 +77,7 @@ const FormKite = () => {
 				renderInput={params => (
 					<TextField
 						{...params}
-						required
+						/*required*/
 						variant="outlined"
 						label="Instructor license"
 						name="license"

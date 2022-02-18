@@ -1,12 +1,12 @@
 import { InputAdornment, Stack, TextField } from "@mui/material";
-import { Email, Event, Person, PhotoCamera } from "@mui/icons-material";
+import { Email, Event, Person } from "@mui/icons-material";
 import React from "react";
 
 const FormBasic = () => {
 	return (
 		<Stack maxWidth="350px">
 			<TextField
-				required
+				/*required*/
 				variant="outlined"
 				label="Name"
 				name="name"
@@ -21,7 +21,7 @@ const FormBasic = () => {
 				}}
 			/>
 			<TextField
-				required
+				/*required*/
 				type="date"
 				variant="outlined"
 				label="Date of birth"
@@ -36,7 +36,7 @@ const FormBasic = () => {
 				}}
 			/>
 			<TextField
-				required
+				/*required*/
 				type="email"
 				variant="outlined"
 				label="Email"
@@ -50,23 +50,26 @@ const FormBasic = () => {
 					),
 				}}
 			/>
-			<TextField
-				required
-				type="url"
-				variant="outlined"
-				label="Profile picture"
-				name="image"
-				margin="normal"
-				InputProps={{
-					startAdornment: (
-						<InputAdornment position="start">
-							<PhotoCamera />
-						</InputAdornment>
-					),
-				}}
-			/>
 		</Stack>
 	);
 };
 
 export default FormBasic;
+
+/*
+
+<TextField
+	/!*required*!/
+	type="url"
+	variant="outlined"
+	label="Profile picture"
+	name="imageurl"
+	margin="normal"
+	InputProps={{
+		startAdornment: (
+			<InputAdornment position="start">
+				<PhotoCamera />
+			</InputAdornment>
+		),
+	}}
+/>*/

@@ -4,7 +4,7 @@ const Schema = new mongoose.Schema({
 	name: String,
 	date: String,
 	email: String,
-	image: String,
+	images: [String],
 	location: String,
 	license: String,
 	availabilities: [String],
