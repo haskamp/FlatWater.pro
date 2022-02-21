@@ -16,12 +16,6 @@ import Form from "/src/organisms/form/index.jsx";
 const Profile = ({ dbInstructor }) => {
 	const { status } = useSession();
 	const [edit, setEdit] = useState(false);
-	//	Laden aller UserID von instructor als liste
-	//  vergleichen von current userid mit liste
-	//  --> no:  keine übereinstimmung -> direct to form
-	//  --> yes: 1. anzeigen der card mit userID (userID muss in [url] stehen) auf
-	//			2. show Edit button
-	//			3. on click to form with state of userID and trigger method post
 
 	return (
 		<Layout>
