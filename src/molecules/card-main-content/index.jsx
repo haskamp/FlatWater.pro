@@ -10,7 +10,7 @@ const CardMainContent = ({ input }) => {
 			<Carousel>
 				{images.map(image => (
 					<CardMedia
-						key={input.id}
+						key={input._id}
 						component="img"
 						src={image}
 						alt={`Kite-Instructor ${input.name}`}
