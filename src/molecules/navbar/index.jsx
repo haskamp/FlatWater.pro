@@ -13,9 +13,11 @@ import { useSession, signOut } from "next-auth/react";
 import { useState } from "react";
 import LoginDialog from "/src/molecules/login-dialog/index.jsx";
 import LoginIcon from "@mui/icons-material/Login";
+import { useRouter } from "next/router";
 
 const NavBar = () => {
 	const { data: session } = useSession();
+	const router = useRouter();
 	console.log("sessionnavbar", session);
 
 	const [open, setOpen] = useState(false);
@@ -87,7 +89,13 @@ const NavBar = () => {
 								open={Boolean(anchorEl)}
 								onClose={handleClose}
 							>
-								<MenuItem onClick={handleClose}>Profile</MenuItem>
+								<MenuItem
+									onClick={() => {
+										router.push("/profile/");
+									}}
+								>
+									Profile
+								</MenuItem>
 								<MenuItem
 									onClick={() => {
 										signOut();

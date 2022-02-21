@@ -20,12 +20,7 @@ const Map = () => {
 
 	return (
 		<div>
-			<MapContainer
-				scrollWheelZoom
-				style={{ height: "400px", width: "400px" }}
-				center={userLocation}
-				zoom={[3]}
-			>
+			<MapContainer scrollWheelZoom center={userLocation} zoom={[3]}>
 				<TileLayer url={mapAPI} attribution="Pixelass&MarCO@neuefische+MarcKlein" />
 				<LocateUser />
 				<Marker animate position={userLocation} icon={markerUserIcon}>

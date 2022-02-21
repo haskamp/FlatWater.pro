@@ -12,9 +12,3 @@ const App = ({ Component, pageProps: { session, ...pageProps } }) => {
 	);
 };
 export default App;
-
-/*
-<SessionProvider session={pageProps.session}>
-	<Global styles={globalStyle} />
-	<Component {...pageProps} />
-</SessionProvider>*/

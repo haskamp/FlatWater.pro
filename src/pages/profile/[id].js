@@ -32,7 +32,7 @@ export const getStaticPaths = async () => {
 	try {
 		const instructors = await Instructor.find();
 		const paths = await instructors.map(instructor => {
-			return { params: { id: instructor._id.valueOf() } };
+			return { params: { id: instructor.user } };
 		});
 
 		return {
@@ -45,10 +45,11 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async ({ params }) => {
+	console.log("params", params);
 	const id = params.id;
 	await dbConnect();
 	try {
-		const instructor = await Instructor.findById(id);
+		const instructor = await Instructor.findOne({ user: id });
 		return {
 			props: { dbInstructor: JSON.parse(JSON.stringify(instructor)) },
 		};

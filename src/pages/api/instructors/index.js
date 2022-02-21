@@ -6,6 +6,7 @@ const handler = async (request, response) => {
 
 	const method = request.method;
 	console.log(method);
+	console.log("request", request);
 
 	switch (method) {
 		case "GET":
@@ -21,6 +22,15 @@ const handler = async (request, response) => {
 			try {
 				console.log(request.body);
 				const mongoResponse = await Instructor.create(request.body);
+				response.status(201).json(mongoResponse);
+			} catch (err) {
+				console.log(err);
+			}
+			break;
+		case "PUT":
+			try {
+				console.log(request.body);
+				const mongoResponse = await Instructor.findByIdAndUpdate("231321313", request.body);
 				response.status(201).json(mongoResponse);
 			} catch (err) {
 				console.log(err);

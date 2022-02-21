@@ -12,6 +12,7 @@ const Schema = new mongoose.Schema({
 	services: [String],
 	slogan: String,
 	aboutyou: String,
+	user: String,
 });
 
 export default mongoose.models.Instructor || mongoose.model("Instructor", Schema);

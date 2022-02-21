@@ -11,7 +11,7 @@ const CardInstructor = ({ instructor }) => {
 		<Card>
 			<CardActionArea
 				onClick={() => {
-					router.push(`/gallery/${instructor._id}`);
+					router.push(`/profile/${instructor.user}`);
 				}}
 			>
 				<Carousel>
