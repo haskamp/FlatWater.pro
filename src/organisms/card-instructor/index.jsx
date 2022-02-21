@@ -17,7 +17,7 @@ const CardInstructor = ({ instructor }) => {
 				<Carousel>
 					{images.map(image => (
 						<CardMedia
-							key={instructor.id}
+							key={instructor._id}
 							component="img"
 							src={image}
 							alt={`Kite-Instructor ${instructor.name}`}

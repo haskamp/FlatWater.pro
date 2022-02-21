@@ -32,7 +32,7 @@ export const getStaticPaths = async () => {
 	try {
 		const instructors = await Instructor.find();
 		const paths = await instructors.map(instructor => {
-			return { params: { id: instructor.user } };
+			return { params: { id: JSON.parse(JSON.stringify(instructor.user)) } };
 		});
 
 		return {

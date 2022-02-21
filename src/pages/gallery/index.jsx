@@ -11,10 +11,8 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import MapIcon from "@mui/icons-material/Map";
 
 const Gallery = ({ dbInstructors }) => {
-	console.log(dbInstructors);
-
 	const [value, setValue] = React.useState("gallery");
-	console.log(value);
+
 	return (
 		<Layout>
 			<Head>
@@ -37,7 +35,7 @@ const Gallery = ({ dbInstructors }) => {
 				</BottomNavigation>
 			</Box>
 			{dbInstructors.map(instructor => {
-				return <CardInstructor key={instructor.id} instructor={instructor} />;
+				return <CardInstructor key={instructor._id} instructor={instructor} />;
 			})}
 		</Layout>
 	);
