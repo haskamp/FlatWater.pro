@@ -35,7 +35,7 @@ export const getStaticPaths = async () => {
 			console.log("id", instructor.user, typeof instructor.user);
 			return { params: { id: instructor.user } };
 		});
-
+		console.log("paths", paths);
 		return {
 			paths,
 			fallback: false,
