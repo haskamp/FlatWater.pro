@@ -25,24 +25,31 @@ const Profile = ({ dbInstructor }) => {
 			</Head>
 			<h1>Profile</h1>
 			{status === "authenticated" ? (
-				<>
-					<Button
-						onClick={() => {
-							setEdit(!edit);
-						}}
-					>
-						Edit Profile
-					</Button>
-					{edit ? (
+				dbInstructor ? (
+					<>
+						<Button
+							onClick={() => {
+								setEdit(!edit);
+							}}
+						>
+							Edit Profile
+						</Button>
+						{edit ? (
+							<Form />
+						) : (
+							<Card sx={{ position: "relative" }}>
+								<CardMainContent input={dbInstructor} />
+								<CardExtendedContent input={dbInstructor} />
+								<CardFooter />
+							</Card>
+						)}
+					</>
+				) : (
+					<>
+						<h1>Please create Profile </h1>
 						<Form />
-					) : (
-						<Card>
-							<CardMainContent input={dbInstructor} />
-							<CardExtendedContent input={dbInstructor} />
-							<CardFooter />
-						</Card>
-					)}
-				</>
+					</>
+				)
 			) : (
 				<p>
 					Please <Link href="/">Login</Link> to create a instructor profile

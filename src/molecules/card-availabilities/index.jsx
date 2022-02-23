@@ -1,16 +1,16 @@
 import { Box, Button, ButtonGroup } from "@mui/material";
 import React from "react";
 
-const weekdays = ["man", "tue", "wed", "thu", "fri", "sat", "sun"];
+const weekdays = ["mon", "tue", "wed", "thu", "fri", "sat", "sun"];
 
 const CardAvailabilities = ({ input }) => {
 	return (
-		<ButtonGroup variant="outline" sx={{ width: "100%" }}>
-			{weekdays.map((day, i) => {
+		<ButtonGroup fullWidth variant="outline" sx={{ my: 2 }}>
+			{weekdays.map(day => {
 				const cardAvailabilities = input.availabilities;
 				return (
 					<Box
-						key={weekdays[i]}
+						key={day}
 						disableRipple
 						component={Button}
 						variant={!cardAvailabilities.includes(day) ? "outlined" : "contained"}
