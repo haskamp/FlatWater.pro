@@ -1,12 +1,13 @@
-import Head from "next/head";
-import React from "react";
-import Layout from "/src/organisms/layout";
 import dbConnect from "/server/database";
 import Instructor from "/src/ions/models/instructor.model";
-import { Card } from "@mui/material";
-import CardMainContent from "/src/molecules/card-main-content";
 import CardExtendedContent from "/src/molecules/card-extended-content";
 import CardFooter from "/src/molecules/card-footer";
+import CardMainContent from "/src/molecules/card-main-content";
+import Layout from "/src/organisms/layout";
+import { Column, Grid } from "@contour/react";
+import Card from "@mui/material/Card";
+import Head from "next/head";
+import React from "react";
 
 const Page = ({ dbInstructor }) => {
 	return (
@@ -16,11 +17,15 @@ const Page = ({ dbInstructor }) => {
 				<meta key="description" name="description" content="content" />
 			</Head>
 			<h1>Instructor</h1>
-			<Card>
-				<CardMainContent input={dbInstructor} />
-				<CardExtendedContent input={dbInstructor} />
-				<CardFooter />
-			</Card>
+			<Grid justify="center" colCount={{ xs: 1, s: 1, m: 2, l: 4, xl: 4 }}>
+				<Column colSpan={{ xs: 1, s: 1, m: 1, l: 2, xl: 2 }}>
+					<Card sx={{ position: "relative" }}>
+						<CardMainContent input={dbInstructor} />
+						<CardExtendedContent input={dbInstructor} />
+						<CardFooter input={dbInstructor} />
+					</Card>
+				</Column>
+			</Grid>
 		</Layout>
 	);
 };

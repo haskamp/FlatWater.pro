@@ -1,5 +1,5 @@
-import { Stack } from "@mui/material";
-import Image from "next/image";
+import Avatar from "@mui/material/Avatar";
+import AvatarGroup from "@mui/material/AvatarGroup";
 import React from "react";
 
 const flags = {
@@ -10,21 +10,11 @@ const flags = {
 
 const CardLanguages = ({ input }) => {
 	return (
-		<div>
-			<Stack direction="row" spacing={20}>
-				{input.languages.map((language, i) => {
-					return (
-						<Image
-							key={language[i]}
-							width={36}
-							height={36}
-							src={flags[language]}
-							alt={language[i]}
-						/>
-					);
-				})}
-			</Stack>
-		</div>
+		<AvatarGroup max={4}>
+			{input.languages.map(language => {
+				return <Avatar key={language} src={flags[language]} alt={language} />;
+			})}
+		</AvatarGroup>
 	);
 };
 export default CardLanguages;

@@ -6,6 +6,7 @@ import {
 	ListItem,
 	ListItemAvatar,
 	ListItemText,
+	Typography,
 } from "@mui/material";
 import React from "react";
 import { GitHub, Google } from "@mui/icons-material";
@@ -22,7 +23,9 @@ const LoginDialog = props => {
 				setOpen(false);
 			}}
 		>
-			<DialogTitle>Choose your login</DialogTitle>
+			<DialogTitle>
+				<Typography variant="button">How do want to log in?</Typography>
+			</DialogTitle>
 			<List sx={{ pt: 0 }}>
 				{authOptions.map(authOption => (
 					<ListItem
@@ -38,7 +41,11 @@ const LoginDialog = props => {
 									(authOption === "google" && <Google />)}
 							</Avatar>
 						</ListItemAvatar>
-						<ListItemText primary={`Log in with ${authOption.toUpperCase()}`} />
+						<ListItemText
+							primary={
+								<Typography variant="button">{authOption.toUpperCase()}</Typography>
+							}
+						/>
 					</ListItem>
 				))}
 			</List>

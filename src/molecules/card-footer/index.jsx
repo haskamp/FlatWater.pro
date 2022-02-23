@@ -1,13 +1,16 @@
-import { Button, CardActions, IconButton, Tooltip, Typography } from "@mui/material";
-import { ExpandMore, Message } from "@mui/icons-material";
-import React from "react";
 import useStore from "/src/ions/store/index.jsx";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import MessageIcon from "@mui/icons-material/Message";
+import Button from "@mui/material/Button";
+import CardActions from "@mui/material/CardActions";
+import IconButton from "@mui/material/IconButton";
+import Tooltip from "@mui/material/Tooltip";
+import React from "react";
 
 const CardFooter = () => {
 	const setIsExpanded = useStore(state => state.setIsExpanded);
-
 	return (
-		<CardActions>
+		<CardActions sx={{ justifyContent: "space-between" }}>
 			<Tooltip title="Expand">
 				<IconButton
 					aria-label="show more"
@@ -15,13 +18,10 @@ const CardFooter = () => {
 						setIsExpanded();
 					}}
 				>
-					<ExpandMore />
+					<ExpandMoreIcon />
 				</IconButton>
 			</Tooltip>
-			<Typography variant="button">50€ per hour</Typography>
-			<Button variant="contained" startIcon={<Message />}>
-				Contact
-			</Button>
+			<Button startIcon={<MessageIcon />}>Contact</Button>
 		</CardActions>
 	);
 };

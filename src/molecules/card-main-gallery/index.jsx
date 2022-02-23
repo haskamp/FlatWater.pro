@@ -1,11 +1,15 @@
+import LocationOnIcon from "@mui/icons-material/LocationOn";
+import { Stack } from "@mui/material";
 import Box from "@mui/material/Box";
 import CardMedia from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import { useRouter } from "next/router";
 import React from "react";
 import Carousel from "react-material-ui-carousel";
 
-const CardMainContent = ({ input }) => {
+const CardMainGallery = ({ input }) => {
+	const router = useRouter();
 	return (
 		<Box>
 			<Carousel indicators={false} animation="slide" duration={300}>
@@ -19,6 +23,9 @@ const CardMainContent = ({ input }) => {
 						width="100%"
 						height={400}
 						sx={{ objectFit: "cover", objectPosition: "center" }}
+						onClick={() => {
+							router.push(`/profile/${input.user}`);
+						}}
 					/>
 				))}
 			</Carousel>
@@ -32,13 +39,25 @@ const CardMainContent = ({ input }) => {
 					right: 0,
 				}}
 			>
-				<Typography variant="overline" sx={{ display: "flex", alignItems: "center" }}>
-					{`${input.license}-Instructor`}
-				</Typography>
+				<Stack direction="row" justifyContent="space-between">
+					<Typography variant="overline" sx={{ display: "flex", alignItems: "center" }}>
+						{`${input.license}-Instructor`}
+					</Typography>
+					<Typography
+						variant="overline"
+						sx={{
+							display: "flex",
+							alignItems: "center",
+						}}
+					>
+						<LocationOnIcon sx={{ mr: 0.2, fontSize: 15 }} />
+						{input.location}
+					</Typography>
+				</Stack>
 				<Typography variant="h4">{input.name}</Typography>
 			</CardContent>
 		</Box>
 	);
 };
 
-export default CardMainContent;
+export default CardMainGallery;

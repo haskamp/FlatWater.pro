@@ -9,7 +9,6 @@ const Page = () => {
 				<title key="title">CoastCoach | Home </title>
 				<meta name="description " content="This is my Capstone Project" />
 			</Head>
-			<h1>Homepage</h1>
 		</Layout>
 	);
 };

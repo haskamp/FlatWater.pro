@@ -10,10 +10,10 @@ const ServiceIcons = {
 
 const CardServices = ({ input }) => {
 	return (
-		<Stack direction="row" spacing={2} divider={<Divider flexItem orientation="vertical" />}>
-			{input.services.map((service, i) => {
+		<Stack direction="row" gap={1} divider={<Divider flexItem orientation="vertical" />}>
+			{input.services.map(service => {
 				const Icon = ServiceIcons[service];
-				return <Icon key={service[i]} fontSize="large" />;
+				return <Icon key={service} fontSize="large" />;
 			})}
 		</Stack>
 	);

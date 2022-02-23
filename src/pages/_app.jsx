@@ -1,14 +1,17 @@
-import { Global } from "@emotion/react";
 import React from "react";
-import { globalStyle } from "../ions/styles";
+import CssBaseline from "@mui/material/CssBaseline";
 import { SessionProvider } from "next-auth/react";
+import { ThemeProvider } from "@mui/material";
+import theme from "/src/ions/theme";
 
 const App = ({ Component, pageProps: { session, ...pageProps } }) => {
 	return (
-		<SessionProvider session={session}>
-			<Global styles={globalStyle} />
-			<Component {...pageProps} />
-		</SessionProvider>
+		<ThemeProvider theme={theme}>
+			<SessionProvider session={session}>
+				<CssBaseline />
+				<Component {...pageProps} />
+			</SessionProvider>
+		</ThemeProvider>
 	);
 };
 export default App;
