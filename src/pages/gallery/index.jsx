@@ -6,7 +6,7 @@ import CardExtendedContent from "/src/molecules/card-extended-content";
 import CardFooter from "/src/molecules/card-footer";
 import CardFooterSmall from "/src/molecules/card-footer-small";
 import CardMainGallery from "/src/molecules/card-main-gallery";
-import GalleryButton from "/src/molecules/gallery-button";
+import GalleryControls from "/src/molecules/gallery-controls";
 import Layout from "/src/organisms/layout";
 import { Column, Grid } from "@contour/react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
@@ -17,23 +17,15 @@ import Typography from "@mui/material/Typography";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
-import GalleryFilter from "/src/molecules/gallery-filter";
 
 const Gallery = ({ dbInstructors }) => {
 	const view = useStore(state => state.view);
 	const filterStatus = useStore(state => state.filterStatus);
-	const filteredInstructor = useStore(state => state.filteredInstructor);
-	const setFilteredInstructor = useStore(state => state.setFilteredInstructor);
-	const instructor = useStore(state => state.instructor);
-	const setInstructor = useStore(state => state.setInstructor);
 	const router = useRouter();
 
+	let instructor = dbInstructors;
 	if (filterStatus) {
-		setFilteredInstructor(dbInstructors);
-		return (let data = filteredInstructor);
-	} else {
-		setInstructor(dbInstructors);
-		const data = instructor;
+		instructor = instructor.filter(instructor => instructor.location.includes(filterStatus));
 	}
 	return (
 		<Layout>
@@ -41,12 +33,9 @@ const Gallery = ({ dbInstructors }) => {
 				<title key="title">CoastCoach | Gallery </title>
 				<meta key="description" name="description" content="Gallery" />
 			</Head>
-			<Stack direction="row" justifyContent="space-around">
-				<GalleryButton />
-				<GalleryFilter />
-			</Stack>
+			<GalleryControls />
 			<Grid justify="center" colCount={{ xs: 1, s: 1, m: 2, l: 6, xl: 6 }}>
-				{data.map(instructor => {
+				{instructor.map(instructor => {
 					return (
 						<Column key={instructor._id} colSpan={{ xs: 1, s: 1, m: 1, l: 2, xl: 2 }}>
 							{view === "profile" ? (

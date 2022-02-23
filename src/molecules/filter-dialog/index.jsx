@@ -14,13 +14,11 @@ import useStore from "/src/ions/store";
 
 const FilterDialog = props => {
 	const { open, setOpen } = props;
-	const setFilteredCards = useStore(state => state.setFilteredCards);
 	const setFilterStatus = useStore(state => state.setFilterStatus);
 
 	const handleClose = value => {
 		setOpen(false);
-		setFilteredCards(value);
-		value ? setFilterStatus(true) : setFilterStatus(false);
+		value ? setFilterStatus(value) : setFilterStatus(null);
 	};
 
 	return (
@@ -41,8 +39,7 @@ const FilterDialog = props => {
 						<ListItemText primary={location.label} />
 					</ListItem>
 				))}
-
-				<ListItem autoFocus button onClick={() => handleClose(false)}>
+				<ListItem autoFocus button onClick={() => handleClose(null)}>
 					<ListItemAvatar>
 						<Avatar>
 							<LocationOff />
