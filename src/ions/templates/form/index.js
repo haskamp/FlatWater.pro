@@ -8,10 +8,10 @@ export const locations = [
 	{ label: "Rügen", coords: [54.416665, 13.3999984] },
 	{ label: "Sankt-Peter-Ording", coords: [54.304167, 8.651111] },
 	{ label: "Laboe", coords: [54.401749, 10.22666] },
-	/*	{ label: "Cuxhafen", coords: [53.86163, 8.62514] },
+	{ label: "Cuxhafen", coords: [53.86163, 8.62514] },
 	{ label: "Neuharlingersiel", coords: [53.69965, 7.70283] },
 	{ label: "Saaler Bodden", coords: [54.32285, 12.481398] },
-	{ label: "Sylt", coords: [54.9017773, 8.331346] },*/
+	{ label: "Sylt", coords: [54.9017773, 8.331346] },
 ];
 export const license = [{ label: "IKO" }, { label: "VDWS" }, { label: "VDS" }];
 
