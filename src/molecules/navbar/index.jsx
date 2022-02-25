@@ -1,10 +1,11 @@
 import LoginDialog from "/src/molecules/login-dialog/index.jsx";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import AccountCircle from "@mui/icons-material/AccountCircle";
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import DashboardCustomizeIcon from "@mui/icons-material/DashboardCustomize";
 import HomeIcon from "@mui/icons-material/Home";
 import KitesurfingIcon from "@mui/icons-material/Kitesurfing";
 import LoginIcon from "@mui/icons-material/Login";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
+import MapIcon from "@mui/icons-material/Map";
+import Avatar from "@mui/material/Avatar";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -18,6 +19,8 @@ import useScrollTrigger from "@mui/material/useScrollTrigger";
 import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/router";
 import React, { useState } from "react";
+import Image from "next/image";
+import logo from "/public/assets/homepage/Group.png";
 
 // NavBar hide on Scroll-Funktion
 const HideOnScroll = props => {
@@ -41,11 +44,15 @@ const NavBar = props => {
 		"": "Home",
 		gallery: "Gallery",
 		profile: "Profile",
+		map: "Map",
+		form: "Form",
 	};
 	const routerIconMap = {
 		"": <HomeIcon />,
-		gallery: <AccountBoxIcon />,
+		gallery: <DashboardIcon />,
 		profile: <KitesurfingIcon />,
+		map: <MapIcon />,
+		form: <DashboardCustomizeIcon />,
 	};
 	// States
 	const [open, setOpen] = useState(false);
@@ -66,7 +73,7 @@ const NavBar = props => {
 								router.push("/");
 							}}
 						>
-							<PersonPinIcon />
+							<Image height="34px" width="34px" src={logo} alt="Logo Flatwater" />
 						</IconButton>
 						<Box sx={{ flexGrow: 1 }}>
 							<Chip
@@ -102,7 +109,7 @@ const NavBar = props => {
 										setAnchorEl(event.currentTarget);
 									}}
 								>
-									<AccountCircle />
+									<Avatar src={session.user.image} />
 								</IconButton>
 								<Menu
 									keepMounted

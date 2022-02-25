@@ -10,6 +10,7 @@ import GalleryControls from "/src/molecules/gallery-controls";
 import Layout from "/src/organisms/layout";
 import { Column, Grid } from "@contour/react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import Fab from "@mui/material/Fab";
 import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Stack from "@mui/material/Stack";
@@ -17,6 +18,7 @@ import Typography from "@mui/material/Typography";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import React from "react";
+import MapIcon from "@mui/icons-material/Map";
 
 const Gallery = ({ dbInstructors }) => {
 	const view = useStore(state => state.view);
@@ -34,6 +36,17 @@ const Gallery = ({ dbInstructors }) => {
 				<meta key="description" name="description" content="Gallery" />
 			</Head>
 			<GalleryControls />
+			<Fab
+				variant="extended"
+				elevation={10}
+				sx={{ position: "fixed", left: 120, bottom: 20, zIndex: 3 }}
+				onClick={() => {
+					router.push("/map");
+				}}
+			>
+				<MapIcon sx={{ mr: 1 }} />
+				Map View
+			</Fab>
 			<Grid justify="center" colCount={{ xs: 1, s: 1, m: 2, l: 6, xl: 6 }}>
 				{instructor.map(instructor => {
 					return (

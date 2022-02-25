@@ -12,7 +12,7 @@ const CardMainGallery = ({ input }) => {
 	const router = useRouter();
 	return (
 		<Box>
-			<Carousel indicators={false} animation="slide" duration={300}>
+			<Carousel indicators={false} animation="slide" duration={400}>
 				{input.images.map(image => (
 					<CardMedia
 						key={input._id}

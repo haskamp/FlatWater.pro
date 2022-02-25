@@ -1,9 +1,17 @@
 import { Checkbox } from "@mui/material";
 
 export const locations = [
-	{ label: "Fehmarn" },
-	{ label: "Rügen" },
-	{ label: "Sankt-Peter-Ording" },
+	{ label: "Fehmarn", coords: [54.4378, 11.19352] },
+	{ label: "Heiligenhafen", coords: [54.3717445, 10.9809235] },
+	{ label: "Pelzerhaken", coords: [54.0905313, 10.859508] },
+	{ label: "Salzhaff", coords: [54.0378581, 11.595496] },
+	{ label: "Rügen", coords: [54.416665, 13.3999984] },
+	{ label: "Sankt-Peter-Ording", coords: [54.304167, 8.651111] },
+	{ label: "Laboe", coords: [54.401749, 10.22666] },
+	{ label: "Cuxhafen", coords: [53.86163, 8.62514] },
+	{ label: "Neuharlingersiel", coords: [53.69965, 7.70283] },
+	{ label: "Saaler Bodden", coords: [54.32285, 12.481398] },
+	{ label: "Sylt", coords: [54.9017773, 8.331346] },
 ];
 export const license = [{ label: "IKO" }, { label: "VDWS" }, { label: "VDS" }];
 
