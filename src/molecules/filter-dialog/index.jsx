@@ -32,7 +32,7 @@ const FilterDialog = props => {
 						onClick={() => handleClose(location.label)}
 					>
 						<ListItemAvatar>
-							<Avatar>
+							<Avatar sx={{ background: "#d9698c", color: "white" }}>
 								<Map />
 							</Avatar>
 						</ListItemAvatar>
@@ -41,7 +41,7 @@ const FilterDialog = props => {
 				))}
 				<ListItem autoFocus button onClick={() => handleClose(null)}>
 					<ListItemAvatar>
-						<Avatar>
+						<Avatar sx={{ background: "#d9698c", color: "white" }}>
 							<LocationOff />
 						</Avatar>
 					</ListItemAvatar>

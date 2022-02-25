@@ -15,6 +15,7 @@ const Page = () => {
 				<meta key="description" name="description" content="Form" />
 			</Head>
 			<h1>Form</h1>
+
 			{status === "authenticated" ? (
 				<Form />
 			) : (

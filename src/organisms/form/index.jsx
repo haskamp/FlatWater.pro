@@ -61,7 +61,7 @@ const Form = () => {
 		setSubmitStatus(true);
 		setTimeout(() => {
 			router.push("/profile");
-		}, 12000);
+		}, 4000);
 	};
 
 	return (

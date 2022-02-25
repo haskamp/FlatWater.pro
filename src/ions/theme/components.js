@@ -31,6 +31,19 @@ export const MuiCard = {
 		},
 	},
 };
+
+export const MuiFab = {
+	defaultProps: {
+		/*background: "#d9698c",*/
+		color: "secondary",
+	},
+};
+export const MuiAvatar = {
+	defaultProps: {
+		root: {},
+	},
+};
+
 export const MuiChip = {
 	defaultProps: {
 		color: "secondary",

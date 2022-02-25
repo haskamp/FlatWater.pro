@@ -6,7 +6,7 @@ const LocateUser = () => {
 			map.locate();
 		},
 		locationfound: e => {
-			map.flyTo(e.latlng, [7]);
+			map.flyTo(e.latlng, [9]);
 		},
 	});
 	return null;
