@@ -6,9 +6,6 @@ Find your kitesurfing instructor today and train, ride and developed together.
 
 It’s the ultimate tool to help you level up your riding, it’s never been easier to learn kitesurfing and expand your horizons. You can search for instructors, spots and customised lessons all in one app.
 
-## Getting started
-
-
 ## Atomic design
 
 We use atomic design. You can read more about our decision in the
