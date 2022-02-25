@@ -1,16 +1,9 @@
-# Next App
+# Flatwater.pro
 
-This is a template for a Next.js app.
+THE PLATFORM APP TO LEARN KITESURFING: 
+Find your kitesurfing instructor today and train, ride and developed together. 
 
-It uses the following tools/libraries:
-
-* [Storybook](https://storybook.js.org/)
-* [Cypress](https://cypress.io/)
-* [Jest](https://jestjs.io/)
-* [Commitlint](https://commitlint.js.org/)
-* [Stylelint](https://stylelint.io/)
-* [Eslint](https://eslint.org/)
-* [Prettier](https://prettier.io/)
+It’s the ultimate tool to help you level up your riding, it’s never been easier to learn kitesurfing and expand your horizons. You can search for instructors, spots and customised lessons all in one app.
 
 ## Getting started
 
